@@ -8,7 +8,7 @@ pages <- ragnar_find_links(base_url)
 store_location <- "r4ds.ragnar.duckdb"
 unlink(store_location)
 
-Sys.setenv(OPENAI_API_KEY = "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")
+Sys.setenv(OPENAI_API_KEY = "")
 
 store <- ragnar_store_create(
   store_location,

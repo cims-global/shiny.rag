@@ -15,7 +15,7 @@ tbl_text <- paste(capture.output(t_b_ds_01), collapse = "\n")
 
 chat <- ellmer::chat_deepseek(system_prompt = paste("You're a clinical data analyst who can analyze dataset and tables.",
                                                     "Here is the table: \n", tbl_text),
-                              api_key = "sk-5a970b7dd57d4816aac776ec89a7ebe4",
+                              api_key = "",
                               model = "deepseek-chat")
 
 live_console(chat)
