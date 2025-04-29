@@ -48,7 +48,8 @@ server <- function(input, output, session) {
   # Initialize the store
   store <- ragnar::ragnar_store_create(
     store_location,
-    embed = \(x) ragnar::embed_openai(x, model = "text-embedding-3-small")
+    embed = \(x) ragnar::embed_openai(x, model = "text-embedding-3-small",
+                                      api_key = Sys.getenv("OPENAI_API_KEY"))
   )
   
   observeEvent(input$doc_file, {
@@ -94,7 +95,8 @@ server <- function(input, output, session) {
       and answer the user's question based on the document.
     )--")
     
-    chat_obj <- ellmer::chat_openai(system_prompt, model = "gpt-4o")
+    chat_obj <- ellmer::chat_openai(system_prompt, model = "gpt-4o",
+                                    api_key = Sys.getenv("OPENAI_API_KEY"))
     ragnar::ragnar_register_tool_retrieve(chat_obj, store_ro)
     
     # Save the chat object in a reactive value if needed later
