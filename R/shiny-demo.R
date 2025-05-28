@@ -47,7 +47,7 @@ server <- function(input, output, session) {
   unlink(store_location)  # reset on each run
   
   # Set OpenAI key
-  Sys.setenv(OPENAI_API_KEY = "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")
+  Sys.setenv(OPENAI_API_KEY = "")
   
   # Initialize the store
   store <- ragnar::ragnar_store_create(

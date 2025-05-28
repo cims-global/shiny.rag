@@ -14,7 +14,7 @@ pages <- ragnar_read(tmp_file)
 store_location <- "r4ds.ragnar.duckdb"
 unlink(store_location)
 
-Sys.setenv(OPENAI_API_KEY = "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")
+Sys.setenv(OPENAI_API_KEY = "")
 
 store <- ragnar_store_create(
   store_location,
