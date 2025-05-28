@@ -3,6 +3,7 @@ library(shiny)
 library(bslib)
 library(tools)
 library(readxl)
+library(openxlsx)
 library(DT)
 library(ragnar)
 library(ellmer)
@@ -38,12 +39,15 @@ server <- function(input, output, session) {
   dir.create(temp_doc_dir)
   addResourcePath("docs", temp_doc_dir)
   
+  # Handle shinychat module input
+  rv <- reactiveValues(chat = NULL)
+  
   # Store location for vector DB
   store_location <- tempfile("ragnar_store.duckdb")
   unlink(store_location)  # reset on each run
   
   # Set OpenAI key
-  Sys.setenv(OPENAI_API_KEY = "")
+  Sys.setenv(OPENAI_API_KEY = "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")
   
   # Initialize the store
   store <- ragnar::ragnar_store_create(
@@ -71,16 +75,25 @@ server <- function(input, output, session) {
           style = "border: none;"
         )
       })
+      
+      # Vector store the uploaded document
+      pages <- ragnar::ragnar_read(dest_path)
     } else if (ext %in% c("xlsx", "xls")) {
+      df <- readxl::read_excel(dest_path)
       output$doc_viewer <- renderUI({
-        df <- readxl::read_excel(dest_path)
         datatable(df, options = list(scrollX = TRUE, pageLength = 15))
       })
+      
+      # Vector store the uploaded document
+      pages <- data.frame()
+      for (i in 1:5) {
+        row_df <- df[((i-1)*10+1):(i*10), ]
+        tmp_file <- tempfile(fileext = ".xlsx")
+        write.xlsx(row_df, tmp_file)
+        pages <- rbind(pages, ragnar_read(tmp_file))
+      }
     }
     
-    # Vector store the uploaded document
-    pages <- ragnar::ragnar_read(dest_path)
-    # pages <- ragnar::ragnar_split(pages, max_chars = 1000)
     ragnar::ragnar_store_insert(store, pages)
     ragnar::ragnar_store_build_index(store)
     
@@ -103,8 +116,7 @@ server <- function(input, output, session) {
     rv$chat <- chat_obj
   })
   
-  # Handle shinychat module input
-  rv <- reactiveValues(chat = NULL)
+
   
   observeEvent(input$chat_user_input, {
     req(rv$chat)
