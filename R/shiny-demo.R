@@ -116,8 +116,6 @@ server <- function(input, output, session) {
     rv$chat <- chat_obj
   })
   
-
-  
   observeEvent(input$chat_user_input, {
     req(rv$chat)
     stream <- rv$chat$stream_async(input$chat_user_input)

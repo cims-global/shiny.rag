@@ -5,6 +5,6 @@ account: dtd-ddm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14841652
-bundleId: 10357523
+bundleId: 10357750
 url: https://dtd-ddm.shinyapps.io/shiny-demo/
 version: 1

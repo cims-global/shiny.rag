@@ -1,0 +1,12 @@
+name: DataChat
+title: DataChat
+username: dtd-ddm
+account: dtd-ddm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14984518
+bundleId: 10511787
+url: https://dtd-ddm.shinyapps.io/DataChat/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
