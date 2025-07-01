@@ -1244,7 +1244,6 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "cimstfl",
       "RemoteUsername": "cims-global",
-      "RemotePkgRef": "https://github.com/cims-global/cimstfl.git",
       "RemoteRef": "HEAD",
       "RemoteSha": "0e2994de72f8ebed4714f93ed31c3101ce761bb2",
       "NeedsCompilation": "no",
@@ -6822,19 +6821,18 @@
       ],
       "Remotes": "insightsengineering/rtables@v0.6.10, insightsengineering/tern@v0.9.6",
       "VignetteBuilder": "knitr",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "stat2mw",
+      "RemoteUsername": "cims-global",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "862febb6019c68eae65c6a54efcfc2f7a2e99d49",
       "NeedsCompilation": "no",
       "Author": "First Last [aut, cre] (YOUR-ORCID-ID)",
       "Maintainer": "First Last <first.last@example.com>",
       "Depends": [
         "R (>= 3.5.0)"
-      ],
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "stat2mw",
-      "RemoteUsername": "cims-global",
-      "RemotePkgRef": "https://github.com/cims-global/stat2mw.git",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "9b5e8398ba14b7621830ec6e2223122f2762276e"
+      ]
     },
     "stringi": {
       "Package": "stringi",
